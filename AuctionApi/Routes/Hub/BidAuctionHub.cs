@@ -41,7 +41,7 @@ namespace AuctionAPI.Routes.Mutations
 
             await Groups.AddToGroupAsync(Context.ConnectionId, auctionId);
 
-            await Clients.Group(auctionId).SendAsync("connected", auctionId);
+            //await Clients.Group(auctionId).SendAsync("connected", auctionId);
 
             await base.OnConnectedAsync();
         }
