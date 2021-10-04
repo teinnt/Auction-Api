@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionApi.Common.Models
+namespace AuctionAPI.Common.Models
 {
     public class Address
     {
@@ -10,6 +10,7 @@ namespace AuctionApi.Common.Models
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public string Country { get; set; }
         public string ZipCode { get; set; }
     }
 }

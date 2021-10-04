@@ -19,7 +19,11 @@ namespace AuctionAPI.Common.Auth
 
             services.Configure<JwtOptions>(section);
             services.AddSingleton<IJwtHandler, JwtHandler>();
-            services.AddAuthentication()
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
                 .AddJwtBearer(cfg =>
                 {
                     cfg.RequireHttpsMetadata = false;

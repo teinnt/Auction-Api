@@ -1,9 +1,10 @@
-using AuctionApi.Common.Utils;
-using AuctionApi.Domain.Contracts;
-using AuctionApi.Domain.Mutations;
-using AuctionApi.Domain.Queries;
-using AuctionApi.Domain.Services;
-using AuctionApi.Domain.Types;
+using AuctionAPI.Common.Utils;
+using AuctionAPI.Domain.Contracts;
+using AuctionAPI.Domain.Mutations;
+using AuctionAPI.Domain.Queries;
+using AuctionAPI.Domain.Services;
+using AuctionAPI.Routes.Mutations;
+using AuctionAPI.Routes.Types;
 using AuctionAPI.Common.Auth;
 using AuctionAPI.Common.Contracts;
 using AuctionAPI.Common.Mongo;
@@ -14,6 +15,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AuctionAPI.Common.Security;
+using System;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Threading.Tasks;
 
 namespace AuctionAPI
 {
@@ -41,9 +47,28 @@ namespace AuctionAPI
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             
-            services.AddSingleton<IPasswordStorage, PasswordStorage>();
 
-            services.AddScoped<IAuthenticationServices, AuthenticationServices>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            Func<IServiceProvider, IPrincipal> getPrincipal =
+                     (sp) => sp.GetService<IHttpContextAccessor>().HttpContext.User;
+
+            services.AddScoped(typeof(Func<IPrincipal>), sp =>
+            {
+                Func<IPrincipal> func = () =>
+                {
+                    return getPrincipal(sp);
+                };
+                return func;
+            });
+
+            services.AddScoped<IUserAppContext, UserAppContext>();
+            services.AddSingleton<IPasswordStorage, PasswordStorage>();
+            services.AddScoped<IUserAuthenticationServices, UserAuthenticationServices>();
+            services.AddScoped<IBidAuctionServices, BidAuctionServices>();
+            services.AddScoped<IAuctionServices, AuctionServices>();
+
+            services.AddSignalR(x => x.EnableDetailedErrors = true)
+                .AddAzureSignalR(Configuration["AzureSignalR:ConnectionString"]);
 
             services.AddAuthorization();
 
@@ -54,9 +79,15 @@ namespace AuctionAPI
                 .AddAuthorization()
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<UserQueries>()
+                    .AddTypeExtension<AuctionQueries>()
                 .AddMutationType(d => d.Name("Mutation"))
-                    .AddTypeExtension<AuthenticationMutations>()
-                .AddType<UserType>();
+                    .AddTypeExtension<UserAuthenticationMutations>()
+                    .AddTypeExtension<CompanyAuthenticationMutations>()
+                    .AddTypeExtension<AuctionMutations>()
+                .AddType<UserType>()
+                .AddType<CompanyType>()
+                .AddType<ResponseUserType>()
+                .AddType<ResponseCompanyType>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,10 +109,17 @@ namespace AuctionAPI
 
             app.UseAuthentication();
 
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGraphQL();
-            }); 
+            });
+
+            app.UseAzureSignalR(route =>
+            {
+                route.MapHub<BidAuctionHub>("/auction/bid");
+            });
 
             app.Run(async (context) =>
             {

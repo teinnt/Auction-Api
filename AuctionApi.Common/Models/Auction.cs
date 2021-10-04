@@ -3,11 +3,33 @@ using AuctionAPI.Common.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace AuctionApi.Common.Models
+namespace AuctionAPI.Common.Models
 {
+    public class Bid 
+    {
+        public string BidderId { get; set; }
+        public float Amount { get; set; }
+    }
+
+    public class AuctionRound
+    {
+        public string Id { get; set; }
+        public int RoundNumber { get; set; }
+
+        public Item Item { get; set; }
+        public User Winner { get; set; }
+        public Bid CurrentBid { get; set; }
+        public List<Bid> Bids { get; set; }
+
+        public AuctionRound()
+        {
+            Id = ObjectId.GenerateNewId().ToString();
+            Bids = new List<Bid>();
+        }
+    }
+
     public class Auction : IMongoCommon
     {
         [BsonId]
@@ -25,18 +47,19 @@ namespace AuctionApi.Common.Models
         public string TotalSellAmount { get; set; }
         public float RestrictAmount { get; set; }
         
-        public List<User> Bidders { get; set; }
-        public List<Dictionary<Item, User>> Items { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public List<AuctionRound> Rounds { get; set; }
+        public int CurrentRound { get; set; }
 
+        public DateTime CreatedOn { get; set; }
         public bool IsCancelled { get; set; }
         public bool IsFinished { get; set; }
         public bool IsDeleted { get; set; }
 
         public Auction()
         {
-            Bidders = new List<User>();
-            Items = new List<Dictionary<Item, User>>();
+            Id = ObjectId.GenerateNewId().ToString();
+            UId = Guid.NewGuid();
+            Rounds = new List<AuctionRound>();
         }
     }
 }

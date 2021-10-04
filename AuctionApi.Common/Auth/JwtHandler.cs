@@ -17,7 +17,6 @@ namespace AuctionAPI.Common.Auth
         private readonly JwtHeader _jwtHeader;
         private readonly TokenValidationParameters _tokenValidationParameters;
 
-        // TODO: ASK: Debug password
         public JwtHandler(IOptions<JwtOptions> options)
         {
             _options = options.Value;
@@ -66,7 +65,6 @@ namespace AuctionAPI.Common.Auth
                 Token = token,
                 Expires = exp,
                 UserRole = userRole.GetUserRoleEncryptedString(),
-                UserId = userId
             };
         }
 

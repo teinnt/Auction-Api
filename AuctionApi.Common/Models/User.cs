@@ -1,5 +1,4 @@
-﻿using AuctionApi.Common.Models;
-using AuctionAPI.Common.Contracts;
+﻿using AuctionAPI.Common.Contracts;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
@@ -15,6 +14,16 @@ namespace AuctionAPI.Common.Models
 
     public class User : IMongoCommon
     {
+        public User()
+        {
+            Id = ObjectId.GenerateNewId().ToString();
+            UId = Guid.NewGuid();
+            CreatedOn = DateTime.UtcNow;
+            BoughtItemIds = new List<string>();
+            SoldItemIds = new List<string>();
+            IsDeleted = false;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
