@@ -10,9 +10,7 @@ namespace AuctionAPI.Common.Auth
         public string Token { get; set; }
         public long Expires { get; set; }
         public string UserRole { get; set; }
-        public string UserName { get; set; } 
-        public string UserId { get; set; }
+        public string UserName { get; set; }
         public string WalletAddress { get; set; }
-        public string ShopAddress { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using HotChocolate;
 using HotChocolate.Types;
 using System.Linq;
 
-namespace AuctionApi.Domain.Queries
+namespace AuctionAPI.Domain.Queries
 {
     [ExtendObjectType(name: "Query")]
     public class UserQueries

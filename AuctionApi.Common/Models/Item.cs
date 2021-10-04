@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 
-namespace AuctionApi.Common.Models
+namespace AuctionAPI.Common.Models
 {
     public enum Status
     {
@@ -42,6 +42,8 @@ namespace AuctionApi.Common.Models
 
         public Item()
         {
+            Id = ObjectId.GenerateNewId().ToString();
+            UId = Guid.NewGuid();
             Bids = new List<Dictionary<User, float>>();
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionApi.Common.Models
+namespace AuctionAPI.Common.Models
 {
     public enum Reputation
     {

@@ -1,15 +1,12 @@
-﻿using AuctionApi.Common.Models;
-using AuctionAPI.Common.Contracts;
+﻿using AuctionAPI.Common.Models;
 using AuctionAPI.Common.Models;
 using AuctionAPI.Common.Services;
-using GraphQL.Types;
 using HotChocolate;
 using HotChocolate.Types;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace AuctionApi.Domain.Types
+namespace AuctionAPI.Routes.Types
 {
     public class UserType : ObjectType<User>
     {

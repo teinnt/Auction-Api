@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionApi.Common.Utils
+namespace AuctionAPI.Common.Utils
 {
     public class Constants
     {
