@@ -9,6 +9,7 @@ using AuctionAPI.Common.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace AuctionAPI.Domain.Services
 {
@@ -27,6 +28,12 @@ namespace AuctionAPI.Domain.Services
             _encryptPassword = encryptPassword;
             _jwtHandler = jwtHandler;
             _authHelpers = AuthHelpers.getAuthHelper(_userRepository, null, _encryptPassword);
+        }
+
+        public async Task<User> GetSelf (ClaimsPrincipal claimsPrincipal)
+        {
+            var userId = claimsPrincipal.Claims.First(c => c.Type == "userId").Value;
+            return (await _userRepository.Get(x => x.Id == userId)).FirstOrDefault();
         }
 
         public async Task<Response<JsonWebToken>> LoginUser(LoginInput input)

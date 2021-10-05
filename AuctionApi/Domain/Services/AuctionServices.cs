@@ -36,6 +36,8 @@ namespace AuctionAPI.Domain.Services
             AssignTime(auction, timeShift);
             CreateRounds(auction, 10);
 
+            auction.EndTime = auction.StartTime.AddMinutes(auction.Rounds.Count * 20);
+
             await _auctionRepository.Update(auction);
 
             return auction;
