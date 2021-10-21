@@ -1,7 +1,7 @@
-﻿namespace AuctionAPI.Common.Utils
+﻿namespace AuctionApi.Common.Utils
 {
     public enum TimeShift
     {
-        MORNING, AFTERNOON, EVENING
+        MORNING, AFTERNOON, EVENING, NIGHT
     }
 }

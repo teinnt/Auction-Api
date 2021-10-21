@@ -1,11 +1,12 @@
-﻿using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
+using AuctionApi.Common.Utils;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 
-namespace AuctionAPI.Common.Models
+namespace AuctionApi.Common.Models
 {
     public class Bid 
     {
@@ -20,6 +21,7 @@ namespace AuctionAPI.Common.Models
 
         public Item Item { get; set; }
         public User Winner { get; set; }
+        public User Seller { get; set; }
         public Bid CurrentBid { get; set; }
         public List<Bid> Bids { get; set; }
 
@@ -38,7 +40,11 @@ namespace AuctionAPI.Common.Models
         public Guid UId { get; set; }
 
         public string Name { get; set; }
+        public TimeShift TimeShift { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime StartTime { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime EndTime { get; set; }
 
         public string Company { get; set; }

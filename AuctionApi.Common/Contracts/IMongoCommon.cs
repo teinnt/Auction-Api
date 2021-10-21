@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionAPI.Common.Contracts
+namespace AuctionApi.Common.Contracts
 {
     public interface IMongoCommon : IMongoEntity<string>
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace AuctionAPI.Common.Auth
+namespace AuctionApi.Common.Auth
 {
     public class PasswordStorage : IPasswordStorage
     {

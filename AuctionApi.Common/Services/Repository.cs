@@ -1,4 +1,4 @@
-﻿using AuctionAPI.Common.Contracts;
+﻿using AuctionApi.Common.Contracts;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 
-namespace AuctionAPI.Common.Services
+namespace AuctionApi.Common.Services
 {
     public class Repository<T> : Contracts.IRepository<T> where T : IMongoCommon, new()
     {

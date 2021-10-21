@@ -1,11 +1,11 @@
-﻿using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 
-namespace AuctionAPI.Common.Models
+namespace AuctionApi.Common.Models
 {
     public enum Status
     {
@@ -22,13 +22,13 @@ namespace AuctionAPI.Common.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public Guid UId { get; set; }
+        public string TrackId { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string CryptoAddress { get; set; }
         public int OrderInAuction { get; set; }
 
-        public string HighestPrice { get; set; }
+        public float HighestPrice { get; set; }
         public string Winner { get; set; }
 
         public List<Dictionary<User, float>> Bids { get; set; }
@@ -45,6 +45,7 @@ namespace AuctionAPI.Common.Models
             Id = ObjectId.GenerateNewId().ToString();
             UId = Guid.NewGuid();
             Bids = new List<Dictionary<User, float>>();
+            CreatedOn = DateTime.UtcNow;
         }
     }
 }

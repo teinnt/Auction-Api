@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AuctionAPI.Common
+namespace AuctionApi.Common
 {
     class Program
     {

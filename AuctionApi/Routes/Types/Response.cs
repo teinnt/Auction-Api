@@ -1,6 +1,6 @@
 ﻿
 
-namespace AuctionAPI.Routes.Types
+namespace AuctionApi.Routes.Types
 {
     public class Response<T>
     {

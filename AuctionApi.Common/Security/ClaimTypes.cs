@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionAPI.Common.Security
+namespace AuctionApi.Common.Security
 {
     public static class ClaimTypes
     {

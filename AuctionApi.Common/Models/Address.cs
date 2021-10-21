@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionAPI.Common.Models
+namespace AuctionApi.Common.Models
 {
     public class Address
     {

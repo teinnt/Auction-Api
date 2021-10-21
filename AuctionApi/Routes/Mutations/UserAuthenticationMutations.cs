@@ -1,11 +1,14 @@
 ﻿using System.Threading.Tasks;
 using HotChocolate.Types;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Domain.Models.Authentication;
-using AuctionAPI.Common.Auth;
-using AuctionAPI.Routes.Types;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Domain.Models.Authentication;
+using AuctionApi.Common.Auth;
+using AuctionApi.Routes.Types;
+using System.Security.Claims;
+using HotChocolate.AspNetCore.Authorization;
+using AuctionApi.Common.Models;
 
-namespace AuctionAPI.Domain.Mutations
+namespace AuctionApi.Domain.Mutations
 {
     [ExtendObjectType(name: "Mutation")]
     public class UserAuthenticationMutations
@@ -25,6 +28,12 @@ namespace AuctionAPI.Domain.Mutations
         public async Task<Response<JsonWebToken>> LoginUser(LoginInput input)
         {
             return await _authenticationServices.LoginUser(input);
+        }
+
+        [Authorize]
+        public async Task<User> BecomeSeller(ClaimsPrincipal claimsPrincipal, UpdateUserDetailsInput input)
+        {
+            return await _authenticationServices.BecomeSeller(claimsPrincipal, input);
         }
     }
 }

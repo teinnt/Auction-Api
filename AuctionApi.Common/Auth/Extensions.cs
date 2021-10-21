@@ -7,7 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Common.Auth
+namespace AuctionApi.Common.Auth
 {
     public static class Extensions
     {

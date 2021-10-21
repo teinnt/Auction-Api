@@ -1,10 +1,10 @@
-﻿using AuctionAPI.Common.Contracts;
+﻿using AuctionApi.Common.Contracts;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 
-namespace AuctionAPI.Common.Models
+namespace AuctionApi.Common.Models
 {
     public enum UserRole
     {
@@ -41,6 +41,7 @@ namespace AuctionAPI.Common.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string PasswordHash { get; set; }
+        public string WalletAddress { get; set; }
 
         public bool IsMobilePhoneVerified { get; set; }
         public bool IsEmailVerified { get; set; }

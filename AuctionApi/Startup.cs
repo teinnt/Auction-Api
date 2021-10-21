@@ -1,27 +1,27 @@
-using AuctionAPI.Common.Utils;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Domain.Mutations;
-using AuctionAPI.Domain.Queries;
-using AuctionAPI.Domain.Services;
-using AuctionAPI.Routes.Mutations;
-using AuctionAPI.Routes.Types;
-using AuctionAPI.Common.Auth;
-using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Mongo;
-using AuctionAPI.Common.Services;
+using AuctionApi.Common.Utils;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Domain.Mutations;
+using AuctionApi.Domain.Queries;
+using AuctionApi.Domain.Services;
+using AuctionApi.Routes.Mutations;
+using AuctionApi.Routes.Types;
+using AuctionApi.Common.Auth;
+using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Mongo;
+using AuctionApi.Common.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AuctionAPI.Common.Security;
+using AuctionApi.Common.Security;
 using System;
 using System.Security.Principal;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Threading.Tasks;
 
-namespace AuctionAPI
+namespace AuctionApi
 {
     public class Startup
     {

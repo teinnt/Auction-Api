@@ -1,9 +1,9 @@
-﻿using AuctionAPI.Common.Models;
-using AuctionAPI.Common.Auth;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Models;
+using AuctionApi.Common.Auth;
+using AuctionApi.Common.Models;
 using HotChocolate.Types;
 
-namespace AuctionAPI.Routes.Types
+namespace AuctionApi.Routes.Types
 {
     public class ResponseAuthType : ObjectType<Response<JsonWebToken>>
     {

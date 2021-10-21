@@ -1,15 +1,15 @@
 ﻿using System.Linq;
-using AuctionAPI.Common.Models;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+using AuctionApi.Common.Models;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
-using AuctionAPI.Common.Security;
+using AuctionApi.Common.Security;
 using System;
 using System.Collections.Generic;
 
-namespace AuctionAPI.Routes.Mutations
+namespace AuctionApi.Routes.Mutations
 {
     public class BidAuctionHub : Hub
     {

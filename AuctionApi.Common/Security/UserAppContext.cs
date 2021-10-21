@@ -1,5 +1,5 @@
-﻿using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
 
-namespace AuctionAPI.Common.Security
+namespace AuctionApi.Common.Security
 {
     public interface IUserAppContext
     {

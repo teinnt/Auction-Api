@@ -1,12 +1,13 @@
-﻿using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
-using AuctionAPI.Domain.Contracts;
+﻿using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
+using AuctionApi.Domain.Contracts;
 using HotChocolate;
 using HotChocolate.Types;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Domain.Queries
+namespace AuctionApi.Domain.Queries
 {
     [ExtendObjectType(name: "Query")]
     public class AuctionQueries
@@ -29,6 +30,11 @@ namespace AuctionAPI.Domain.Queries
         public IQueryable<Auction> GetAuctions()
         {
             return _auctionRepository.GetQueryable();
+        }
+
+        public async Task<List<List<Auction>>> GetAvailableAuctions()
+        {
+            return await _auctionServices.GetAwaitingOrRunningAuctions();
         }
     }
 }
