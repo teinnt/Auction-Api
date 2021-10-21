@@ -1,10 +1,10 @@
-﻿using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace AuctionAPI.Common.Models
+namespace AuctionApi.Common.Models
 {
     public class Company : IMongoCommon
     {

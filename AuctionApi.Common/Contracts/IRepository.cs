@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Common.Contracts
+namespace AuctionApi.Common.Contracts
 {
     public interface IRepository<T> where T : IMongoCommon
     {

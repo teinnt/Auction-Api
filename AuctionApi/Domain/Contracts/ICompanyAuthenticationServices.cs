@@ -1,9 +1,9 @@
-﻿using AuctionAPI.Domain.Models.Authentication;
-using AuctionAPI.Routes.Types;
-using AuctionAPI.Common.Auth;
+﻿using AuctionApi.Domain.Models.Authentication;
+using AuctionApi.Routes.Types;
+using AuctionApi.Common.Auth;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Domain.Contracts
+namespace AuctionApi.Domain.Contracts
 {
     public interface ICompanyAuthenticationServices
     {

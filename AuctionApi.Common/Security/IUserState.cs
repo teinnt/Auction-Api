@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionAPI.Common.Security
+namespace AuctionApi.Common.Security
 {
     public interface IUserState
     {

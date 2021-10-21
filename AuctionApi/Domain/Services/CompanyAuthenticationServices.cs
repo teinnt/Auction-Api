@@ -1,17 +1,17 @@
-﻿using AuctionAPI.Common.Models;
-using AuctionAPI.Common.Utils;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Domain.Models.Authentication;
-using AuctionAPI.Routes.Types;
-using AuctionAPI.Common.Auth;
-using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Models;
+using AuctionApi.Common.Utils;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Domain.Models.Authentication;
+using AuctionApi.Routes.Types;
+using AuctionApi.Common.Auth;
+using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
 using MongoDB.Bson;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Domain.Services
+namespace AuctionApi.Domain.Services
 {
     public class CompanyAuthenticationServices : ICompanyAuthenticationServices
     {

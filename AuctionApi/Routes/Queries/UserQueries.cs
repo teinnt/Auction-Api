@@ -1,6 +1,6 @@
-﻿using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
-using AuctionAPI.Domain.Contracts;
+﻿using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
+using AuctionApi.Domain.Contracts;
 using HotChocolate;
 using HotChocolate.AspNetCore.Authorization;
 using HotChocolate.Types;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Domain.Queries
+namespace AuctionApi.Domain.Queries
 {
     [ExtendObjectType(name: "Query")]
     public class UserQueries

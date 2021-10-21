@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionAPI.Common.Mongo
+namespace AuctionApi.Common.Mongo
 {
     public class MongoOption
     {

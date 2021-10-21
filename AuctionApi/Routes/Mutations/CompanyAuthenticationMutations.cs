@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Threading.Tasks;
 using HotChocolate.Types;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
-using AuctionAPI.Domain.Models.Authentication;
-using AuctionAPI.Common.Auth;
-using AuctionAPI.Routes.Types;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
+using AuctionApi.Domain.Models.Authentication;
+using AuctionApi.Common.Auth;
+using AuctionApi.Routes.Types;
 
-namespace AuctionAPI.Domain.Mutations
+namespace AuctionApi.Domain.Mutations
 {
     [ExtendObjectType(name: "Mutation")]
     public class CompanyAuthenticationMutations

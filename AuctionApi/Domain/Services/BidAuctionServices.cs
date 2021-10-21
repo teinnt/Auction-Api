@@ -1,13 +1,13 @@
-﻿using AuctionAPI.Common.Models;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Models;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Domain.Services
+namespace AuctionApi.Domain.Services
 {
     public class BidAuctionServices : IBidAuctionServices
     {

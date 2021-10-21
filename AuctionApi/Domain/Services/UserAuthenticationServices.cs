@@ -1,17 +1,17 @@
-﻿using AuctionAPI.Common.Models;
-using AuctionAPI.Common.Utils;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Domain.Models.Authentication;
-using AuctionAPI.Routes.Types;
-using AuctionAPI.Common.Auth;
-using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using AuctionApi.Common.Models;
+using AuctionApi.Common.Utils;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Domain.Models.Authentication;
+using AuctionApi.Routes.Types;
+using AuctionApi.Common.Auth;
+using AuctionApi.Common.Contracts;
+using AuctionApi.Domain.Models.Auction;
 
-namespace AuctionAPI.Domain.Services
+namespace AuctionApi.Domain.Services
 {
     public class UserAuthenticationServices : IUserAuthenticationServices
     {
@@ -34,6 +34,55 @@ namespace AuctionAPI.Domain.Services
         {
             var userId = claimsPrincipal.Claims.First(c => c.Type == "userId").Value;
             return (await _userRepository.Get(x => x.Id == userId)).FirstOrDefault();
+        }
+
+        public async Task<User> GetUserById(string userId)
+        {
+            return (await _userRepository.Get(x => x.Id == userId)).FirstOrDefault();
+        }
+
+        public async Task<User> BecomeSeller(ClaimsPrincipal claimsPrincipal, UpdateUserDetailsInput input)
+        {
+            var user = await GetSelf(claimsPrincipal);
+
+            user.PhoneNumber = input.PhoneNumber;
+            user.Address = new Address
+            {
+                HouseNumber = input.HouseNumber,
+                StreetAddress = input.Street,
+                City = input.City,
+                State = input.State,
+                Country = input.Country,
+                ZipCode = input.ZipCode
+            };
+            user.LegalIdUrl = input.ImageURL;
+            user.WalletAddress = input.WalletAddress;
+
+            await _userRepository.Update(user);
+
+            return user;
+        }
+
+        public async Task<User> UpdateBuyerDetails(ClaimsPrincipal claimsPrincipal, UpdateWinnerInput input)
+        {
+            var user = await GetSelf(claimsPrincipal);
+
+            user.PhoneNumber = input.PhoneNumber;
+            user.Address = new Address
+            {
+                HouseNumber = input.HouseNumber,
+                StreetAddress = input.Street,
+                City = input.City,
+                State = input.State,
+                Country = input.Country,
+                ZipCode = input.ZipCode
+            };
+            user.LegalIdUrl = input.ImageURL;
+            user.WalletAddress = input.WalletAddress;
+
+            await _userRepository.Update(user);
+
+            return user;
         }
 
         public async Task<Response<JsonWebToken>> LoginUser(LoginInput input)

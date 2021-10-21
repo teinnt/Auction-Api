@@ -1,11 +1,14 @@
 ﻿using System;
 using HotChocolate.Types;
 using System.Threading.Tasks;
-using AuctionAPI.Domain.Contracts;
-using AuctionAPI.Common.Models;
-using AuctionAPI.Common.Utils;
+using AuctionApi.Domain.Contracts;
+using AuctionApi.Common.Models;
+using AuctionApi.Common.Utils;
+using AuctionApi.Domain.Models.Auction;
+using HotChocolate.AspNetCore.Authorization;
+using System.Security.Claims;
 
-namespace AuctionAPI.Routes.Mutations
+namespace AuctionApi.Routes.Mutations
 {
     [ExtendObjectType(name: "Mutation")]
     public class AuctionMutations
@@ -19,14 +22,20 @@ namespace AuctionAPI.Routes.Mutations
 
         public async Task<Auction> AddAuction(string name, TimeShift timeShift)
         {
-            try
-            {
-                return await _auctionServices.AddAuction(name, timeShift);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return await _auctionServices.AddAuction(name, timeShift);
+        }
+
+        [Authorize]
+        public async Task<Auction> AddItemToAuction(ClaimsPrincipal claimsPrincipal, AddItemInput input)
+        {
+            return await _auctionServices.AddItemToAuction(claimsPrincipal, input);
+        }
+
+        [Authorize]
+        public async Task<AuctionRound> UpdateItemWinner(ClaimsPrincipal claimsPrincipal,
+            UpdateWinnerInput input)
+        {
+            return await _auctionServices.UpdateWinner(claimsPrincipal, input);
         }
     }
 }

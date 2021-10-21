@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AuctionAPI.Common.Auth
+namespace AuctionApi.Common.Auth
 {
     public class JsonWebToken
     {

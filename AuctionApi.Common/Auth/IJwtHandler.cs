@@ -1,7 +1,7 @@
-﻿using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Models;
 using System.Security.Claims;
 
-namespace AuctionAPI.Common.Auth
+namespace AuctionApi.Common.Auth
 {
     public interface IJwtHandler
     {

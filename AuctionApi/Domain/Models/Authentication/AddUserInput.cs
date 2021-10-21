@@ -1,11 +1,10 @@
-﻿using AuctionAPI.Common.Models;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Domain.Models.Authentication
+namespace AuctionApi.Domain.Models.Authentication
 {
     public record AddUserInput (
         string UserName,

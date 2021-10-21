@@ -1,11 +1,11 @@
-﻿using AuctionAPI.Common.Models;
-using AuctionAPI.Common.Auth;
-using AuctionAPI.Common.Contracts;
-using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Models;
+using AuctionApi.Common.Auth;
+using AuctionApi.Common.Contracts;
+using AuctionApi.Common.Models;
 using System.Threading.Tasks;
 using System.Linq;
 
-namespace AuctionAPI.Common.Utils
+namespace AuctionApi.Common.Utils
 {
     public class AuthHelpers
     {

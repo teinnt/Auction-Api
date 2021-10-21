@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuctionAPI.Common.Mongo
+namespace AuctionApi.Common.Mongo
 {
     class MongoInitializer : IDatabaseInitializer
     {

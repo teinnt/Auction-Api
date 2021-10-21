@@ -1,4 +1,4 @@
-﻿using AuctionAPI.Common.Models;
+﻿using AuctionApi.Common.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AuctionAPI.Common.Auth
+namespace AuctionApi.Common.Auth
 {
     public class JwtHandler : IJwtHandler
     {
